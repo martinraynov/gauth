@@ -12,7 +12,7 @@ Usage
         Google:a2b3c4d5e6f7g8h9
         Github:234567qrstuvwxyz
 
-- Run `gauth`. The progress bar indicates how far the next change is.
+- Run `gauth` app for your environment. The progress bar indicates how far the next change is.
 
         $ gauth
                    prev   curr   next
@@ -49,9 +49,13 @@ Build
 
 You can build the binary by using the make commands (you must have make and go installed)
 
-For Linux binary :
+For build of all binaries for every environment :
 
 ```make build```
+
+For Linux binary :
+
+```make build_linux```
 
 For Windows binary :
 

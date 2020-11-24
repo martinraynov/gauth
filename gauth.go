@@ -47,6 +47,7 @@ func main() {
 
 					log.Println("Config file created at : ", path.Join(user.HomeDir, ".gauth/gauth.csv"))
 					log.Println("You can now modify your config file and add your auth information (1 per line)")
+					log.Println("Press the Enter Key to stop anytime")
 
 					break
 				} else {

@@ -5,12 +5,19 @@ M = $(shell printf "\033[34;1m▶\033[0m")
 ######################
 
 .PHONY: build
-build: ## Build the application for linux
+build: ## Build the application for all envs
+	@$(MAKE) build_linux
+	@$(MAKE) build_windows
+	@$(MAKE) build_mac
+
+.PHONY: build_linux
+build_linux: ## Build the application for linux
 	go build -o ./bin/gauth_linux .
 
 .PHONY: build_windows
 build_windows: ## Build the application for windows
 	env GOOS=windows GOARCH=amd64 go build -o ./bin/gauth_windows.exe .
+
 .PHONY: build_mac
 build_mac: ## Build the application for windows
 	env GOOS=darwin GOARCH=amd64 go build -o ./bin/gauth_mac.app .
