@@ -86,9 +86,14 @@ func main() {
 
 	go func() {
 		for {
-			c := exec.Command("cls")
+			// Clear terminal For windows
+			c := exec.Command("cmd", "/c", "cls")
 			c.Stdout = os.Stdout
 			c.Run()
+
+			// Clear terminal For linux
+			fmt.Print("\033[H\033[2J")
+
 			currentTS, progress := gauth.IndexNow()
 
 			tw := tabwriter.NewWriter(os.Stdout, 0, 8, 1, ' ', 0)
@@ -105,7 +110,7 @@ func main() {
 			fmt.Printf("[%-29s]\n\n\n", strings.Repeat("=", progress))
 
 			log.Println("Press the Enter Key to stop anytime")
-			time.Sleep(100 * time.Millisecond)
+			time.Sleep(200 * time.Millisecond)
 		}
 	}()
 
