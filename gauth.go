@@ -86,7 +86,7 @@ func main() {
 
 	go func() {
 		for {
-			c := exec.Command("clear")
+			c := exec.Command("cls")
 			c.Stdout = os.Stdout
 			c.Run()
 			currentTS, progress := gauth.IndexNow()
