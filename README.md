@@ -55,6 +55,20 @@ Encryption
 Note that this encryption mechanism is far from ideal from a pure security standpoint.
 Please read [OpenSSL's notes on the subject](http://www.openssl.org/docs/crypto/EVP_BytesToKey.html#NOTES).
 
+Build
+-----
+
+You can build the binary by using the make commands (you must have make and go installed)
+
+For Linux binary :
+
+```make build```
+
+For Windows binary :
+
+```make build_windows```
+
+
 Compatibility
 -------------
 
