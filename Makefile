@@ -12,7 +12,7 @@ build: ## Build the application for linux
 build_windows: ## Build the application for windows
 	env GOOS=windows GOARCH=amd64 go build -o ./bin/gauth_windows.exe .
 .PHONY: build_mac
-build_windows: ## Build the application for windows
+build_mac: ## Build the application for windows
 	env GOOS=darwin GOARCH=amd64 go build -o ./bin/gauth_mac.app .
 
 .PHONY: help
