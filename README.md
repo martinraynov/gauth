@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/pcarrier/gauth.png?branch=master)](https://travis-ci.org/pcarrier/gauth)
-
 gauth: replace Google Authenticator
 ===================================
 
@@ -10,11 +8,13 @@ With a Go environment already set up, it should be as easy as `go get github.com
 
 *Eg,* with `GOPATH=$HOME/go`, it will create a binary `$HOME/go/bin/gauth`.
 
+Use `gauth init` to generate the config folder structure and the gauth.csv file with the correct rights.
+
 Usage
 -----
 
 - In web interfaces, pretend you can't read QR codes, get a secret like `hret 3ij7 kaj4 2jzg` instead.
-- Store one secret per line in `~/.config/gauth.csv`, in the format `name:secret`. For example:
+- Store one secret per line in `~/.gauth/gauth.csv`, in the format `name:secret`. For example:
 
         AWS:   ABCDEFGHIJKLMNOPQRSTUVWXYZ234567ABCDEFGHIJKLMNOPQRSTUVWXYZ234567
         Airbnb:abcd efgh ijkl mnop
@@ -23,7 +23,7 @@ Usage
 
 - Restrict access to your user:
 
-        $ chmod 600 ~/.config/gauth.csv
+        $ chmod 600 ~/.gauth/gauth.csv
 
 - Run `gauth`. The progress bar indicates how far the next change is.
 
@@ -46,7 +46,7 @@ Encryption
 
 `gauth` supports password-based encryption of `gauth.csv`. To encrypt, use:
 
-        $ openssl enc -aes-128-cbc -md sha256 -in gauth.csv -out ~/.config/gauth.csv
+        $ openssl enc -aes-128-cbc -md sha256 -in gauth.csv -out ~/.gauth/gauth.csv
         enter aes-128-cbc encryption password:
         Verifying - enter aes-128-cbc encryption password:
 
