@@ -8,10 +8,6 @@ With a Go environment already set up, it should be as easy as `go get github.com
 
 *Eg,* with `GOPATH=$HOME/go`, it will create a binary `$HOME/go/bin/gauth`.
 
-Use `gauth init` to generate the config folder structure and the gauth.csv file with the correct rights.
-
-Use `gauth help` to display all the steps in the terminal for the setup.
-
 Usage
 -----
 

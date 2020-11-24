@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/csv"
 	"fmt"
@@ -26,48 +27,36 @@ func main() {
 			log.Fatal(err)
 		}
 
-		// If argument is passed use selected function
-		if os.Args != nil && len(os.Args) > 1 {
-			switch os.Args[1] {
-			case "init":
-				if os.MkdirAll(path.Join(user.HomeDir, ".gauth"), 0700); err != nil {
-					log.Fatalln("Error when creating folder : ", path.Join(user.HomeDir, ".gauth"), err)
-				}
-
-				_, err := os.OpenFile(path.Join(user.HomeDir, ".gauth/gauth.csv"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-				if err != nil {
-					log.Fatalln("Error when creating gauth.csv file : ", path.Join(user.HomeDir, ".gauth/gauth.csv"), err)
-				}
-
-				log.Println("Config file created at : ", path.Join(user.HomeDir, ".gauth/gauth.csv"))
-				log.Fatalln("You can now modify your config file and add your auth information (1 per line)")
-				break
-			case "help":
-				log.Println("Welcome to gauth (modified by martin.raynov)")
-				log.Println("============================================")
-				log.Println("1. Use 'gauth init' command to to init the application. This command will :")
-				log.Println("   -> create the directory :", path.Join(user.HomeDir, ".gauth"))
-				log.Println("   -> create the config file inside : gauth.csv")
-				log.Println("2. Modify your config file ", path.Join(user.HomeDir, ".gauth/gauth.csv"), "and add your auth information (1 per line)")
-				log.Println("   Example : Github:234567qrstuvwxyz")
-				log.Println("3. Start your application 'gauth' and enjoy !")
-				fmt.Scanln()
-				os.Exit(1)
-
-			default:
-				log.Fatalln("Unknown argument :", os.Args[1])
-			}
-		}
-
 		cfgPath = path.Join(user.HomeDir, ".gauth/gauth.csv")
-	}
 
-	if _, err := os.Stat(cfgPath); err != nil {
-		log.Println("gauth.csv doesn't exist : ", err)
-		log.Println("Use 'gauth init' command to init the file !")
-		log.Println("Press the Enter Key to stop anytime")
-		fmt.Scanln()
-		os.Exit(1)
+		if _, err := os.Stat(cfgPath); err != nil {
+			log.Println("gauth.csv doesn't exist : ", err)
+			log.Println("Do you wans to init the gauth.csv config file ? [y/N]")
+			scanner := bufio.NewScanner(os.Stdin)
+			for scanner.Scan() {
+				if scanner.Text() == "y" {
+					errCreate := os.MkdirAll(path.Join(user.HomeDir, ".gauth"), 0700)
+					if errCreate != nil {
+						log.Fatalln("Error when creating folder : ", path.Join(user.HomeDir, ".gauth"), errCreate)
+					}
+
+					_, errCreate = os.OpenFile(path.Join(user.HomeDir, ".gauth/gauth.csv"), os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
+					if errCreate != nil {
+						log.Fatalln("Error when creating gauth.csv file : ", path.Join(user.HomeDir, ".gauth/gauth.csv"), errCreate)
+					}
+
+					log.Println("Config file created at : ", path.Join(user.HomeDir, ".gauth/gauth.csv"))
+					log.Println("You can now modify your config file and add your auth information (1 per line)")
+
+					break
+				} else {
+					os.Exit(1)
+				}
+			}
+
+			fmt.Scanln()
+			os.Exit(1)
+		}
 	}
 
 	cfgContent, err := gauth.LoadConfigFile(cfgPath, getPassword)
