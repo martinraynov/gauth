@@ -1,6 +1,33 @@
 gauth: replace Google Authenticator
 ===================================
 
+This fork adds standalone program files for several OS.
+
+
+Execution
+-----
+
+Download program file adapted to your OS
+
+**Windows**
+
+[gauth_windows.exe](/bin/gauth_windows.exe) , then execute it.
+
+**Linux**
+
+[gauth_linux](/bin/gauth_linux)
+, then execute it.
+
+In a terminal :
+
+        ./gauth_linux
+
+**Mac OS**:
+[gauth_mac.app](/bin/gauth_mac.app), then execute it.
+
+
+You will be asked to create a `gauth.csv` file if it doesn't exists.
+
 Usage
 -----
 
