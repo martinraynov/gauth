@@ -1,13 +1,6 @@
 gauth: replace Google Authenticator
 ===================================
 
-Installation
-------------
-
-With a Go environment already set up, it should be as easy as `go get github.com/pcarrier/gauth`.
-
-*Eg,* with `GOPATH=$HOME/go`, it will create a binary `$HOME/go/bin/gauth`.
-
 Usage
 -----
 
@@ -64,6 +57,9 @@ For Windows binary :
 
 ```make build_windows```
 
+For Mac binary :
+
+```make build_mac```
 
 Compatibility
 -------------
@@ -90,24 +86,3 @@ Tested with:
 - Slack
 
 Please report further results to pierre@gcarrier.fr.
-
-Rooted Android?
----------------
-
-If your Android phone is rooted, it's easy to "back up" your secrets from an `adb shell` into `gauth`.
-
-    # sqlite3 /data/data/com.google.android.apps.authenticator2/databases/database \
-              'select email,secret from accounts'
-
-Really, does this make sense?
------------------------------
-
-At least to me, it does. My laptop features encrypted storage, a stronger authentication mechanism,
-and I take good care of its physical integrity.
-
-My phone also runs arbitrary apps, is constantly connected to the Internet, gets forgotten on tables.
-
-Thanks to the convenience of a command line utility, my usage of 2-factor authentication went from
-3 to 10 services over a few days.
-
-Clearly a win for security.
