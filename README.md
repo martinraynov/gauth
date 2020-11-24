@@ -10,6 +10,8 @@ With a Go environment already set up, it should be as easy as `go get github.com
 
 Use `gauth init` to generate the config folder structure and the gauth.csv file with the correct rights.
 
+Use `gauth help` to display all the steps in the terminal for the setup.
+
 Usage
 -----
 
@@ -21,10 +23,6 @@ Usage
         Google:a2b3c4d5e6f7g8h9
         Github:234567qrstuvwxyz
 
-- Restrict access to your user:
-
-        $ chmod 600 ~/.gauth/gauth.csv
-
 - Run `gauth`. The progress bar indicates how far the next change is.
 
         $ gauth
@@ -35,9 +33,6 @@ Usage
         Github     911264 548790 784099
         [=======                      ]
 
-- `gauth` is convenient to use in `watch`.
-
-        $ watch -n1 gauth
 
 - Remember to keep your system clock synchronized and to **lock your computer when brewing your tea!**
 
@@ -82,6 +77,7 @@ Tested with:
 - WP.com
 - bittrex.com
 - poloniex.com
+- Slack
 
 Please report further results to pierre@gcarrier.fr.
 
