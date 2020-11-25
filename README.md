@@ -25,6 +25,9 @@ In a terminal :
 **Mac OS**:
 [gauth_mac.app](/bin/gauth_mac.app), then execute it.
 
+In a terminal :
+
+        open ./gauth_mac.app
 
 You will be asked to create a `gauth.csv` file if it doesn't exists.
 
